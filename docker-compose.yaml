@@ -11,3 +11,16 @@ php-fpm:
     image: php:7.2-fpm
     volumes:
         - ./code:/code
+
+web_db:
+  image: mariadb:10.2
+  expose:
+    - "3306"
+  ports:
+    - "3306:3306"
+  command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode="" --innodb_flush_method=O_DSYNC
+  environment:
+    - MYSQL_DATABASE=dev
+    - MYSQL_ROOT_PASSWORD=rootpass
+    - MYSQL_USER=devuser
+    - MYSQL_PASSWORD=devuserpass
