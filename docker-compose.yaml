@@ -4,7 +4,7 @@ web:
         - "80:80"
     volumes:
         - ./code:/code
-        - ./site.conf:/etc/nginx/conf.d/site.conf
+        - ./ops/nginx/sites-enabled:/etc/nginx/sites-enabled
         - ./ops/nginx/nginx.conf:/etc/nginx/nginx.conf
         - ./ops/nginx/default.d:/etc/nginx/default.d
     links:
