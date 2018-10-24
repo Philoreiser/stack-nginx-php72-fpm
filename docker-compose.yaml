@@ -9,10 +9,13 @@ web:
         - ./ops/nginx/default.d:/etc/nginx/default.d
     links:
         - php-fpm
+        
 php-fpm:
-    image: php:7.2-fpm
+    image: php:7.2-fpm-pdo
     volumes:
         - ./code:/code
+    links:
+        - web_db
 
 web_db:
   image: mariadb:10.2
