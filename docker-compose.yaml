@@ -1,5 +1,6 @@
 web:
-    image: nginx:latest
+    # image: nginx:latest
+    image: philoreiser/centos:7-nginx-php72-fpm
     ports:
         - "80:80"
     volumes:
@@ -8,14 +9,15 @@ web:
         - ./ops/nginx/nginx.conf:/etc/nginx/nginx.conf
         - ./ops/nginx/default.d:/etc/nginx/default.d
     links:
-        - php-fpm
-        
-php-fpm:
-    image: php:7.2-fpm-pdo
-    volumes:
-        - ./code:/code
-    links:
         - web_db
+        # - php-fpm
+        
+# php-fpm:
+#     image: php:7.2-fpm-pdo
+#     volumes:
+#         - ./code:/code
+#     links:
+#         - web_db
 
 web_db:
   image: mariadb:10.2
